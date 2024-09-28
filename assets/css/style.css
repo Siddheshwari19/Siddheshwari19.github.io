@@ -755,6 +755,13 @@ body {
   margin-bottom: 10px;
 }
 
+.blog-subtitle-sub {
+  font-size: 1.5em;
+  color: #173b6c;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
 .blog-text {
   font-size: 1.1em;
   color: #555;

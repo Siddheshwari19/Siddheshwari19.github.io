@@ -140,15 +140,127 @@
 
       </div>
       <div class="project-report">
-        <h2>Project Report</h2>
+        <!-- <h2>Project Report</h2>
             <p>
               Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              <br>
+            </p> -->
+            <div class="project-container">
+              <!-- Project Title -->
+              <h2 class="blog-title">Sales Dashboard</h2>
+            
+              <!-- Project Overview -->
+               
+              <!-- <p class="blog-overview">
+                This project implements a task queue system using Redis as a broker, demonstrating efficient task management and processing. By leveraging Docker Compose, the system achieves improved scalability and easier deployment, showcasing a practical application of distributed systems.
+                
+              </p> -->
+
+              <h3 class="blog-subtitle">Introduction</h3>
+              <p class="blog-text">
+                In today’s data-driven world, businesses rely heavily on visual insights to make informed decisions. I built a Sales Dashboard that provides a comprehensive view of sales performance across various regions, product categories, and customer segments. This dashboard allows users to quickly assess key metrics like sales, profit, and discount patterns. Let’s walk through how this dashboard was created and the significance of each visualization.
+              </p>
+
+              
+
+              <h3 class="blog-subtitle">Understanding the Dataset</h3>
+              <p class="blog-text">
+                The dataset contains sales data from different regions and includes various columns such as:
+                <ul>
+                  <li><span style="font-weight: 600;">Order information:</span> Order ID, Order Date, Ship Date</li>
+                  <li><span style="font-weight: 600;">Customer information:</span> Customer ID, Customer Name, Segment</li>
+                  <li><span style="font-weight: 600;">Product information:</span> Product ID, Category, Sub-Category, Product Name</li>
+                  <li><span style="font-weight: 600;">Sales metrics:</span> Sales, Quantity, Discount, Profit</li>
+                </ul>
+                This provided a clear idea of what kind of insights I could generate, focusing on customer segmentation, product performance, and regional sales trends.
+              </p>
+
+              <!-- <h3 class="blog-subtitle">The Story</h3>
+              <p class="blog-text">
+                The challenge was to create a system that could efficiently manage and process tasks in a distributed environment. The goal was to build an application that demonstrated the use of task queues, showcasing how they can improve system performance and scalability. <br><br>
+                I designed and implemented a Flask application that uses Redis as a task queue broker. The system allows for task creation, queueing, and retrieval, all while being containerized with Docker for easy deployment and scaling.
+              </p> -->
+
+              <h3 class="blog-subtitle">Setting Up the Dashboard Framework</h3>
+              <p class="blog-text">
+                I used Tableau to create the dashboard. The first step was to connect my dataset to Tableau and start by structuring the layout. My goal was to create a dashboard that not only displays information clearly but also allows users to interact with it.
+                I planned for five main visualizations:
+                <ul>
+                  <li>Key Performance Indicator (KPI) trends</li>
+                  <li>Sales and Profit Distribution by State</li>
+                  <li>Monthly Sales by Segment</li>
+                  <li>Total Sales by Location and Manager</li>
+                  <li>States Above and Below U.S. Sales/Profits Average</li>
+                </ul>
+                This provided a clear idea of what kind of insights I could generate, focusing on customer segmentation, product performance, and regional sales trends.
+              </p>
+              
+
+              <!-- Tech Stack -->
+              <!-- <h3 class="blog-subtitle">Setting Up the Dashboard Framework</h3>
+              <p>I used Tableau to create the dashboard. The first step was to connect my dataset to Tableau and start by structuring the layout. My goal was to create a dashboard that not only displays information clearly but also allows users to interact with it.
+                I planned for three main visualizations:
+              </p>
+              <ol class="tech-list">
+                <li>Sales and profit trends</li>
+                <li>Redis stores that task in memory, waiting for a worker to process it.</li>
+                <li>Workers (other programs running in the background) check Redis and pick up tasks to complete them.</li>
+                <li>Once done, the result can be checked through the website.</li>
+              </ol>
+
+              <p>Let’s break down the main pieces of this system:</p> -->
+
+              <h3 class="blog-subtitle-sub">Key Performance Indicator (KPI) trends</h3>
+              <p class="blog-text">
+                At the heart of any effective dashboard is its ability to provide immediate, actionable insights. With this in mind, the KPI Trend Overview takes center stage. Total Sales, Total Profit, and Total Quantity are displayed as line graphs, comparing the current year (2022) with the previous year (2021). This year-over-year comparison is crucial – it not only shows current performance but also provides context. The stark visual contrast between the two years tells this story at a glance, revealing growth or decline trends.
+                <br></br>
+                <img src="assets/img/portfolio/sales1.png" class = "project-img" alt="">
+              </p>
+
+              <h3 class="blog-subtitle-sub">Sales and Profit Distribution by State</h3>
+              <p class="blog-text">
+                The geographical aspect of sales data is addressed through a United States map showing sales and profit distribution by state. A choropleth map was chosen, where color intensity represents sales volume, and circle size indicates profit. This dual-layer approach allows viewers to quickly identify high-performing states and potential areas for improvement. It's fascinating to see how some states might have high sales but lower profits, prompting questions about pricing strategies or operational costs in those areas.
+                <img src="assets/img/portfolio/sales2.png" class = "project-img" alt="">
+              </p>
+
+              <h3 class="blog-subtitle-sub">Monthly Sales by Segment</h3>
+              <p class="blog-text">
+                Understanding customer segments is the next piece of the puzzle. The Monthly Sales by Segment chart breaks down sales trends for Consumer, Corporate, and Home Office segments. Multi-series line charts are used for this, with a distinct color assigned to each segment. This visualization is particularly valuable as it reveals not just which segment is driving sales, but how purchasing behaviors fluctuate over time. The clear dominance of the Consumer segment, for instance, might inform marketing strategies or product development priorities.
+                <img src="assets/img/portfolio/sales4.png" class = "project-img" alt="">
+              </p>
+
+              <h3 class="blog-subtitle-sub">Total Sales by Location and Manager</h3>
+              <p class="blog-text">
+                To give credit where it's due and understand regional performance, the Total Sales by Location and Manager chart was created. This bar chart does double duty – it shows both individual manager performance and regional totals. The color-coding by region within each manager's bar creates a layered story, allowing viewers to assess both personal and regional contributions to the overall sales picture.
+                <img src="assets/img/portfolio/sales5.png" class = "project-img" alt="">
+              </p>
+
+              <h3 class="blog-subtitle-sub">States Above and Below U.S. Sales/Profits Average</h3>
+              <p class="blog-text">
+                One of the more nuanced visualizations included is the pair of maps showing states above and below the U.S. sales and profits average. These maps use color-coding to differentiate states based on their performance relative to the national average. States performing above average are represented in one color, while those below average are shown in another. This visual representation serves as a quick reference for identifying geographical patterns in performance. It allows for an immediate grasp of which regions are excelling and which may need additional support or strategy adjustments.
+                <img src="assets/img/portfolio/sales3.png" class = "project-img" alt="">
+              </p>
+            
+              <h3 class="blog-subtitle">Insights</h3>
+              <p class="blog-text">
+                Looking at the finished dashboard, several key insights jump out. The total sales of $733K represent a healthy 20.36% increase from the previous year – a clear sign of growth. The West region, under Sadie Pawthorne's management, stands out as the top performer with $250K in sales. And the consistent dominance of the Consumer segment across months provides valuable direction for business strategy.
+              </p>
+
               <img src="assets/img/portfolio/sd.png" class = "project-img" alt="">
-            </p>
+            
+              <div class="blog-links">
+                <!-- <a href="#" class="button">GitHub Repository</a> -->
+                <a href="https://public.tableau.com/app/profile/siddheshwari.bankar/viz/SalesDashboard_17220153918660/Dashboard1" class="button">Click here to view interactive Dashboard</a>
+              </div>
+            
+             
+            </div>
+            
 
       </div>
     </section><!-- End Portfolio Details Section -->
+    
+
+    
 
   </main><!-- End #main -->
 
