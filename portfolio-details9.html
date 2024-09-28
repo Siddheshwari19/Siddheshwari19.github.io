@@ -123,8 +123,8 @@
               </p>
               <ul>
                 <li><strong>Category:</strong> Full Stack</li>
-                <li><strong>Tech Stack:</strong> Python, NLP, AWS (DynamoDB, S3, EC2), Flask, Hadoop, Docker, Spark</li>
-                <li><strong>GitHun Link</strong>: <a href="https://github.com/Siddheshwari19/Book-Recommendation-Search-Engine">Book Recommendation System</a></li>
+                <li><strong>Tech Stack:</strong> Python, Redis, Docker Compose, Flask</li>
+                <li><strong>GitHun Link</strong>: <a href="https://github.com/Siddheshwari19/Redis-Task-Queues-deployed-on-Docker-Compose">Redis Task Queues</a></li>
                 
               </ul>
             </div>
@@ -147,58 +147,125 @@
             <div class="project-container">
               <!-- Project Title -->
               <h2 class="blog-title">Task Queues System using Redis and Docker Compose</h2>
-          
+            
               <!-- Project Overview -->
-              <p class="blog-overview">
-                In response to long waiting times and inefficient appointment scheduling at Indian tax offices, I developed VisitGST—a web-based solution to streamline visitor management. By introducing real-time scheduling, the application improved overall efficiency by 21%.
+               
+              <!-- <p class="blog-overview">
+                This project implements a task queue system using Redis as a broker, demonstrating efficient task management and processing. By leveraging Docker Compose, the system achieves improved scalability and easier deployment, showcasing a practical application of distributed systems.
+                
+              </p> -->
+
+              <h3 class="blog-subtitle">What is this project about?</h3>
+              <p class="blog-text">
+                Ever wondered how big websites handle background tasks like sending emails or processing large amounts of data without slowing down the user experience? In this report, I’ll explain how I built a system that handles these tasks in the background, using two tools: Redis and Docker Compose.
+                This project implements a task queue system with Redis as the broker, enabling smooth task management and processing. By incorporating Docker Compose, the system becomes more scalable and easier to deploy, offering a practical example of distributed systems in action.
               </p>
-          
+
+              
+
+              <h3 class="blog-subtitle">The Problem: Handling Long Tasks</h3>
+              <p class="blog-text">
+                Imagine you're using a website that needs to send you an email. If the website tried to send the email while you waited, it would make the site feel slow. What if the task takes several seconds or more? It’s not fun to stare at a loading screen, right?
+                To solve this, we need a way to send the email in the background while letting the website respond quickly. This is where a task queue comes in! Instead of doing the hard work right away, the website can hand off the task to a worker in the background. Then the worker does the heavy lifting while the website stays fast and responsive.
+              </p>
+
+              <!-- <h3 class="blog-subtitle">The Story</h3>
+              <p class="blog-text">
+                The challenge was to create a system that could efficiently manage and process tasks in a distributed environment. The goal was to build an application that demonstrated the use of task queues, showcasing how they can improve system performance and scalability. <br><br>
+                I designed and implemented a Flask application that uses Redis as a task queue broker. The system allows for task creation, queueing, and retrieval, all while being containerized with Docker for easy deployment and scaling.
+              </p> -->
+              
+
+              <!-- Tech Stack -->
+              <h3 class="blog-subtitle">The Solution: Redis Task Queue</h3>
+              <p>To make this happen, I built a system where:</p>
+              <ol class="tech-list">
+                <li>The website adds a task (like sending an email) to a queue.</li>
+                <li>Redis stores that task in memory, waiting for a worker to process it.</li>
+                <li>Workers (other programs running in the background) check Redis and pick up tasks to complete them.</li>
+                <li>Once done, the result can be checked through the website.</li>
+              </ol>
+
+              <p>Let’s break down the main pieces of this system:</p>
+
+              <h3 class="blog-subtitle">What is Redis?</h3>
+              <p class="blog-text">
+                Redis is a super-fast, in-memory database that can store data. In this case, it stores tasks in a queue. Think of Redis like a to-do list where tasks are added by the website, and workers come by to pick up tasks one by one to finish.
+              </p>
+
+              <h3 class="blog-subtitle">What is Docker Compose?</h3>
+              <p class="blog-text">
+                Docker Compose helps us manage different parts of the system in separate containers. Containers are like mini virtual computers that run different programs. Here, we use Docker Compose to run the website, Redis, and workers separately but make sure they can talk to each other.
+              </p>
+
+              <h3 class="blog-subtitle">How It Works: Step-by-Step</h3>
+              <ol class="tech-list">
+                <li style="font-weight: 600;">Task Creation (The Website)</li>
+                <p>I built a simple website using Flask (a Python web framework) where users can add new tasks. When a user performs an action (like clicking a button), it sends a task to Redis to be handled in the background.</p>
+                <li style="font-weight: 600;">The Task Queue (Redis)</li>
+                <p>Redis holds onto the tasks that need to be done, like a waiting room for tasks. Each task sits in line until a worker picks it up to work on it.</p>
+                <li style="font-weight: 600;">Worker Processes</li>
+                <p>These are small programs running in the background. They constantly check Redis to see if there’s a new task waiting. If there is, they grab it, complete the work (like sending an email), and move on to the next task. These workers run in their own containers using Docker Compose.</p>
+                <li style="font-weight: 600;">Fetching Results</li>
+                <p>After the worker finishes a task, the website can check Redis to see the task’s status and show you the result, like "Task completed!" or "Still processing…".</p>
+              </ol>
+
+              <img src="assets/img/portfolio/tqdc1.png" class = "project-img" alt="">
+            
               <!-- Tech Stack -->
               <h3 class="blog-subtitle">Tech Stack</h3>
               <ul class="tech-list">
-                <li>Docker Compose</li>
-                <li>Redis</li>
-                <li>Python</li>
-                <li>Flask</li>
-                <li>RQ (Python Library)</li>
+                <li><span style="font-weight: 600;">Redis:</span> For storing and managing tasks in the queue.</li>
+                <li><span style="font-weight: 600;">Docker Compose:</span> To manage all the different parts (the website, Redis, workers) in containers so they can work together smoothly.</li>
+                <li><span style="font-weight: 600;">Python:</span> The programming language behind all of this.</li>
+                <li><span style="font-weight: 600;">RQ (Redis Queue):</span> A Python library that lets us easily queue tasks in Redis.</li>
+                <li><span style="font-weight: 600;">Flask:</span> For building the website that adds tasks and fetches results.</li>
               </ul>
-          
-              <!-- The Story: Problem, Solution, & Features -->
-              <h3 class="blog-subtitle">The Story</h3>
+
+              <img src="assets/img/portfolio/tqdc2.png" class = "project-img" alt="">
+            
+              <!-- <h3 class="blog-subtitle">The Story</h3>
               <p class="blog-text">
-                The tax offices faced a common challenge: manual scheduling led to inefficiency, long visitor queues, and poor time management. My goal was to build a web application that would allow users to check the real-time availability of officials and schedule appointments accordingly. <br><br>
-                Collaborating with a team of three, I led the design and implementation process using the MERN stack (MongoDB, Express.js, React, Node.js). The key feature was an integrated scheduling system that automatically adjusts available time slots based on real-time data.
-              </p>
-          
-              <!-- Key Features -->
-              <h3 class="blog-subtitle">Key Features</h3>
+                The challenge was to create a system that could efficiently manage and process tasks in a distributed environment. The goal was to build an application that demonstrated the use of task queues, showcasing how they can improve system performance and scalability. <br><br>
+                I designed and implemented a Flask application that uses Redis as a task queue broker. The system allows for task creation, queueing, and retrieval, all while being containerized with Docker for easy deployment and scaling.
+              </p> -->
+            
+              <!-- <h3 class="blog-subtitle">Key Features</h3>
               <ul class="feature-list">
-                <li>Real-time appointment scheduling using MongoDB and React</li>
-                <li>Automated time slot adjustments based on system updates</li>
-                <li>Scalable Dockerized backend to handle multiple office locations</li>
-              </ul>
-          
-              <!-- Challenges and Solutions -->
-              <h3 class="blog-subtitle">Challenges & Solutions</h3>
+                <li>Redis-based task queue implementation for efficient task management</li>
+                <li>Flask application with endpoints for task queueing and data retrieval</li>
+                <li>Worker processes for task execution</li>
+                <li>Docker containerization for improved deployment and scalability</li>
+              </ul> -->
+            
+              <h3 class="blog-subtitle">Conclusion</h3>
               <p class="blog-text">
-                The major challenge was managing a large number of real-time queries without overloading the database. By implementing efficient indexing and optimizing queries in MongoDB, I reduced database load by 30%, ensuring a smooth user experience even during peak hours.
+                Building this system taught me a lot about task management and scaling in web applications. By using Redis for task queues and Docker Compose for containerization, I created a system that can handle tasks in the background without affecting the main website’s performance. This concept is widely used in modern web applications to make sure users get a fast, smooth experience.
               </p>
-          
-              <!-- Impact / Results -->
-              <h3 class="blog-subtitle">Impact & Results</h3>
+            
+              <!-- <h3 class="blog-subtitle">Impact & Results</h3>
               <p class="blog-text">
-                By automating the scheduling process, VisitGST reduced visitor wait times by 30% and improved scheduling efficiency by 21%. The project is currently used across multiple tax offices, with plans to scale further.
-              </p>
-          
-              <!-- Links to Demo and GitHub -->
+                The implemented system successfully demonstrated the working of Redis Task Queues. It allowed for efficient task creation and management, with new tasks being added to the queue each time the root URL was accessed. The Docker containerization enabled easy deployment and potential for scaling, making it a valuable example for distributed system architectures.
+              </p> -->
+            
               <div class="blog-links">
-                <a href="#" class="button">Live Demo</a>
-                <a href="https://github.com/Siddheshwari19/visitgst" class="button secondary">GitHub Repo</a>
+                <!-- <a href="#" class="button">GitHub Repository</a> -->
+                <a href="https://github.com/Siddheshwari19/Redis-Task-Queues-deployed-on-Docker-Compose" class="button">GitHub Repository</a>
               </div>
-          
-              <!-- Optional Screenshot/Project Image -->
+            
+              <h3 class="blog-subtitle">Implementation</h3>
               <div class="blog-image">
-                <img src="screenshot.jpg" alt="Project Screenshot" />
+                <img src="assets/img/portfolio/Screenshot (569).png" class = "project-img" alt="">
+                <p></p>
+                <img src="assets/img/portfolio/Screenshot (570).png" class = "project-img" alt="">
+                <p></p>
+                <img src="assets/img/portfolio/Screenshot (572).png" class = "project-img" alt="">
+                <p></p>
+                <img src="assets/img/portfolio/Screenshot (574).png" class = "project-img" alt="">
+                <p></p>
+                <img src="assets/img/portfolio/Screenshot (576).png" class = "project-img" alt="">
+                <p></p>
+                <img src="assets/img/portfolio/Screenshot (577).png" class = "project-img" alt="">
               </div>
             </div>
             
